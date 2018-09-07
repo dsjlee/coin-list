@@ -2,7 +2,7 @@
 Progressive Web Application built with Angular 6 Material Design components. <br>
 Displays Cryptocurrency data from Coinmarketcap.
 
-Demo of running application: https://dsjlee.bitbucket.io/ <br>
+Demo of running application: https://dsjlee.github.io <br>
 For mobile devices, click "Add to home screen" in browser to install as app. 
 
 This app is currently configured for Coinmarketcap's public API v2 and will need to be refactored to use CMC's new pro API (This code change is planned).
