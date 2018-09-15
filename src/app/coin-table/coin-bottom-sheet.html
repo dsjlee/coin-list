@@ -1,0 +1,12 @@
+<mat-list (click)="openLink($event)">
+    <mat-list-item>Name: &nbsp; <img [src]="data.img" alt="img"> &nbsp; {{data.name}}</mat-list-item>
+    <mat-list-item>
+        Price (7d): &nbsp; <img class="chart" [src]="data.chart" alt="graph">
+    </mat-list-item>
+    <mat-list-item>Volume 24h: {{data.quote.USD.volume_24h | currency}}</mat-list-item>
+    <mat-list-item>Market Cap: {{data.quote.USD.market_cap | currency}}</mat-list-item>
+    <mat-list-item>Circulating Supply: {{data.circulating_supply | number:'1.0-0'}}</mat-list-item>
+    <mat-list-item>Total Supply: {{data.total_supply | number:'1.0-0'}}</mat-list-item>
+    <mat-list-item>Max Supply: {{data.max_supply | number:'1.0-0'}}</mat-list-item>
+    <mat-list-item>Updated: {{data.last_updated | date: 'medium'}}</mat-list-item>
+</mat-list>

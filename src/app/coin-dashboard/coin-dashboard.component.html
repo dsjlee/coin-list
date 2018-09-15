@@ -1,0 +1,38 @@
+<div class="grid-container">
+  <!-- <h1 class="mat-h1">Dashboard</h1> -->
+  <mat-grid-list cols="2" rowHeight="400">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+  <!-- <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header> -->
+        <mat-card-content class="dashboard-card-content">
+          <div *ngIf="(route === '/globaldata') && globalData">
+            <p>Active Cryptocurrencies: {{globalData.active_cryptocurrencies| number:'1.0-0'}}</p>
+            <p>Active Market Pairs: {{globalData.active_market_pairs| number:'1.0-0'}}</p>
+            <p>Active Exchanges: {{globalData.active_exchanges| number:'1.0-0'}}</p>
+            <p>BTC Dominance: {{globalData.btc_dominance}} %</p>
+            <p>ETH Dominance: {{globalData.eth_dominance}} %</p>
+            <p>Total Market Cap: {{globalData.quote.USD.total_market_cap | currency}}</p>
+            <p>Total Volume 24h: {{globalData.quote.USD.total_volume_24h | currency}}</p>
+            <p>Updated: {{globalData.last_updated | date: 'medium'}}</p>
+          </div>
+          <div *ngIf="(route === '/about')">
+            <p>Data provided by <a href="https://coinmarketcap.com" target="_blank">Coinmarketcap</a></p>
+            <p>Source code available on <a href="https://github.com/dsjlee/coin-list" target="_blank">Github</a></p>
+            <p>Version: 1.0.0</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

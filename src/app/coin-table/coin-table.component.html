@@ -1,0 +1,64 @@
+<mat-grid-list cols="7" rowHeight="56.7167" class="tbl-form-field">
+  <mat-grid-tile colspan="3">
+    <mat-form-field>
+      <input matInput [(ngModel)]="searchTerm" (keyup)="applyFilter()" placeholder="Filter">
+      <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm='';applyFilter();">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3">
+    <small>Updated: {{lastUpdated}}</small>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1">
+    <button mat-mini-fab color="primary" (click)="refreshTableData()" [disabled]="isTableLoading">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
+<div class="mat-elevation-z8">
+  <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+    <ng-container matColumnDef="cmc_rank">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Market Cap">#</th>
+      <td mat-cell *matCellDef="let row">{{row.cmc_rank}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="Ticker">Sym</th>
+      <td mat-cell *matCellDef="let row">
+        <a href="javascript:void(0)" (click)="openBottomSheet(row.id)" matTooltip="{{row.name}}">{{row.symbol}}</a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header  matTooltip="Price">USD</th>
+      <td mat-cell *matCellDef="let row">{{row.price.toString() | slice:0:7}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="percent_change_1h">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="%">1h</th>
+      <td mat-cell *matCellDef="let row" [ngClass]="getPercentClass(row.percent_change_1h)">{{row.percent_change_1h | number:'1.0-2'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="percent_change_24h">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="%">24h</th>
+      <td mat-cell *matCellDef="let row" [ngClass]="getPercentClass(row.percent_change_24h)">{{row.percent_change_24h | number:'1.0-2'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="percent_change_7d">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="%">7d</th>
+      <td mat-cell *matCellDef="let row" [ngClass]="getPercentClass(row.percent_change_7d)">{{row.percent_change_7d | number:'1.0-2'}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+    [length]="dataSource.data.length"
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]">
+  </mat-paginator>
+</div>
