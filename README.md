@@ -3,7 +3,7 @@ Progressive Web Application built with Angular 7 Material Design components. <br
 Displays Cryptocurrency data from Coinmarketcap's pro API v1
 
 Demo of running application: https://dsjlee.github.io <br>
-Can be installed on mobile devices or on desktop as Windows 10 app from browsers support it.
+Can be installed on mobile devices or on desktop as Windows 10 app from browsers that support it.
 
 Using CMC's pro-API requires your own server-side application acting as proxy service due to following limitation:
 
