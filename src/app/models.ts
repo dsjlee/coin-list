@@ -17,7 +17,7 @@ export class Status {
 }
 
 export class Coin {
-    id: string;
+    id: number;
     name: string;
     symbol: string;
     slug: string;

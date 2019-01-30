@@ -70,7 +70,7 @@ export class CoinTableComponent implements OnInit {
     }
   }
 
-  openBottomSheet(id: string): void {
+  openBottomSheet(id: number): void {
     let selectedCoin = this.dataSource.data.find(coin => coin.id === id);
     selectedCoin.img = `https://s2.coinmarketcap.com/static/img/coins/16x16/${selectedCoin.id}.png`;
     selectedCoin.chart = `https://s2.coinmarketcap.com/generated/sparklines/web/7d/usd/${selectedCoin.id}.png`;
