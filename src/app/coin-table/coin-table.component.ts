@@ -9,6 +9,7 @@ import {
  } from '@angular/material';
 import { CoinService } from '../coin.service';
 import { Coin } from '../models';
+import { interval, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-coin-table',
@@ -26,6 +27,7 @@ export class CoinTableComponent implements OnInit {
   isTableLoading = false;
   updateDate: Date;
   lastUpdated: string;
+  refreshInterval: Observable<number>
 
   constructor(private coinService: CoinService, private bottomSheet: MatBottomSheet, public snackBar: MatSnackBar) {}
 
@@ -38,6 +40,10 @@ export class CoinTableComponent implements OnInit {
     await this.refreshTableData();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.refreshInterval = interval(300000); // 5 min
+    this.refreshInterval.subscribe(n => {
+      this.refreshTableData();
+    });
   }
 
   async refreshTableData() {
