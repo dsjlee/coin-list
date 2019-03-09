@@ -12,7 +12,7 @@ Using CMC's pro-API requires your own server-side application acting as proxy se
 Example of such proxy service app can be found at https://github.com/dsjlee/CoreApi
 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.x
 
 ## Development server
 
@@ -25,3 +25,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Changelog
+v1.0.3 - 2019-03-09
+- implement auto-refresh with 5 min interval
