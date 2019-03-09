@@ -44,6 +44,11 @@ export class CoinTableComponent implements OnInit {
     this.refreshInterval.subscribe(n => {
       this.refreshTableData();
     });
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === 'visible' && !this.isTableLoading) {
+        this.refreshTableData();
+      }
+    });
   }
 
   async refreshTableData() {
