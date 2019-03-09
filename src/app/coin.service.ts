@@ -17,6 +17,7 @@ const httpOptions = {
 export class CoinService {
 
   private coinApi = "https://netfour.apphb.com/api/coin/"; // "https://localhost:44333/api/coin/";
+  isVisibilityListenerAdded = false;
 
   constructor(private http: HttpClient) { }
 

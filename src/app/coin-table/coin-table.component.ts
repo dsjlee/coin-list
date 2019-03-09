@@ -27,7 +27,7 @@ export class CoinTableComponent implements OnInit {
   isTableLoading = false;
   updateDate: Date;
   lastUpdated: string;
-  refreshInterval: Observable<number>
+  refreshInterval: Observable<number>;
 
   constructor(private coinService: CoinService, private bottomSheet: MatBottomSheet, public snackBar: MatSnackBar) {}
 
@@ -44,11 +44,13 @@ export class CoinTableComponent implements OnInit {
     this.refreshInterval.subscribe(n => {
       this.refreshTableData();
     });
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === 'visible' && !this.isTableLoading) {
+    if (!this.coinService.isVisibilityListenerAdded) {
+      this.coinService.isVisibilityListenerAdded = true;
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible' && !this.isTableLoading) {
         this.refreshTableData();
-      }
-    });
+      }});
+    }
   }
 
   async refreshTableData() {
