@@ -40,7 +40,7 @@ export class CoinTableComponent implements OnInit {
     await this.refreshTableData();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.refreshInterval = interval(300000); // 5 min
+/*     this.refreshInterval = interval(300000); // 5 min
     this.refreshInterval.subscribe(n => {
       this.refreshTableData();
     });
@@ -50,7 +50,7 @@ export class CoinTableComponent implements OnInit {
         if (document.visibilityState === 'visible' && !this.isTableLoading) {
         this.refreshTableData();
       }});
-    }
+    } */
   }
 
   async refreshTableData() {
