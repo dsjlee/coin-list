@@ -35,9 +35,9 @@ export class CoinTableComponent implements OnInit {
     this.initCoinTable();
   }
 
-  async initCoinTable() {
+  initCoinTable() {
     this.dataSource = new MatTableDataSource();
-    await this.refreshTableData();
+    this.refreshTableData();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
 /*     this.refreshInterval = interval(300000); // 5 min
@@ -53,20 +53,21 @@ export class CoinTableComponent implements OnInit {
     } */
   }
 
-  async refreshTableData() {
+  refreshTableData() {
     this.isTableLoading = true;
-    let coins = await this.coinService.getCoinList().toPromise();
-    coins.forEach(coin => {
+    this.coinService.getCoinList().subscribe(coins => {
+      coins.forEach(coin => {
         coin.price = coin.quote.USD.price;
         coin.percent_change_1h = coin.quote.USD.percent_change_1h;
         coin.percent_change_24h = coin.quote.USD.percent_change_24h;
         coin.percent_change_7d = coin.quote.USD.percent_change_7d;
+      });
+      this.dataSource.data = coins;
+      this.isTableLoading = false;
+      this.updateDate = new Date();
+      this.lastUpdated = this.updateDate.toLocaleTimeString()
+      this.openSnackBar(`Refreshed: ${this.lastUpdated}`);
     });
-    this.dataSource.data = coins;
-    this.isTableLoading = false;
-    this.updateDate = new Date();
-    this.lastUpdated = this.updateDate.toLocaleTimeString()
-    this.openSnackBar(`Refreshed: ${this.lastUpdated}`);
   }
 
   applyFilter() {

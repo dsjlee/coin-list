@@ -43,8 +43,8 @@ export class CoinDashboardComponent implements OnInit {
     } 
   }
 
-  async getGlobalData() {
-    this.globalData = await this.coinService.getGlobalData().toPromise();
+  getGlobalData() {
+    this.coinService.getGlobalData().subscribe(data => this.globalData = data);
   }
 
 }
