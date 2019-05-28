@@ -39,12 +39,12 @@ export class CoinDashboardComponent implements OnInit {
   ngOnInit() {
     this.route = this.router.url;
     if (this.route === "/globaldata") {
-      this.getGlobalData();
+      this.coinService.getGlobalData().subscribe(data => this.globalData = data);
     } 
   }
 
   getGlobalData() {
-    this.coinService.getGlobalData().subscribe(data => this.globalData = data);
+    this.coinService.getGlobalData();
   }
 
 }
