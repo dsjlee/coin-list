@@ -1,12 +1,9 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { 
-  MatTableDataSource, 
-  MatPaginator, MatSort, 
-  MatBottomSheet, 
-  MatBottomSheetRef, 
-  MAT_BOTTOM_SHEET_DATA,
-  MatSnackBar
- } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { CoinService } from '../coin.service';
 import { Coin } from '../models';
 import { interval, Observable } from 'rxjs';
