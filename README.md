@@ -1,5 +1,5 @@
 # CoinList
-Progressive Web Application built with Angular 7 Material Design components. <br>
+Progressive Web Application built with Angular 8 Material Design components. <br>
 Displays Cryptocurrency data from Coinmarketcap's pro API v1
 
 Demo of running application: https://dsjlee.github.io <br>
