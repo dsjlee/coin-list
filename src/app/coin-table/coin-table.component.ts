@@ -17,8 +17,8 @@ import { interval, Observable } from 'rxjs';
   styleUrls: ['./coin-table.component.css']
 })
 export class CoinTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['cmc_rank', 'symbol', 'price', 'percent_change_1h', 'percent_change_24h', 'percent_change_7d'];
