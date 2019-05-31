@@ -12,7 +12,7 @@ Using CMC's pro-API requires your own server-side application acting as proxy se
 Example of such proxy service app can be found at https://github.com/dsjlee/CoreApi
 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.x
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.x
 
 ## Development server
 
