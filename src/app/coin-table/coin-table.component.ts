@@ -37,17 +37,20 @@ export class CoinTableComponent implements OnInit {
     this.refreshTableData();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-/*     this.refreshInterval = interval(300000); // 5 min
-    this.refreshInterval.subscribe(n => {
-      this.refreshTableData();
-    });
-    if (!this.coinService.isVisibilityListenerAdded) {
-      this.coinService.isVisibilityListenerAdded = true;
+    this.refreshInterval = interval(300000); // 5 min
+    //this.refreshInterval.subscribe(n => {
+    //  this.refreshTableData();
+    //});
+    //if (!this.coinService.isVisibilityListenerAdded) {
+    //  this.coinService.isVisibilityListenerAdded = true;
+
       document.addEventListener('visibilitychange', () => {
         if (document.visibilityState === 'visible' && !this.isTableLoading) {
-        this.refreshTableData();
-      }});
-    } */
+          this.refreshTableData();
+        }
+      });
+
+    //}
   }
 
   refreshTableData() {
