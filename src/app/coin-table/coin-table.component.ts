@@ -30,6 +30,11 @@ export class CoinTableComponent implements OnInit {
 
   ngOnInit() {
     this.initCoinTable();
+    document.addEventListener('visibilitychange', this.refreshOnVisible);
+  }
+
+  ngOnDestroy() {
+    document.removeEventListener('visibilitychange', this.refreshOnVisible);
   }
 
   initCoinTable() {
@@ -37,17 +42,11 @@ export class CoinTableComponent implements OnInit {
     this.refreshTableData();
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    //this.refreshInterval = interval(300000); // 5 min
-    //this.refreshInterval.subscribe(n => {
-    //  this.refreshTableData();
-    //});
-    if (!this.coinService.isVisibilityListenerAdded) {
-      this.coinService.isVisibilityListenerAdded = true;
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible' && !this.isTableLoading) {
-          this.refreshTableData();
-        }
-      });
+  }
+
+  refreshOnVisible = () => {
+    if (document.visibilityState === 'visible' && !this.isTableLoading) {
+      this.refreshTableData();
     }
   }
 
@@ -63,7 +62,7 @@ export class CoinTableComponent implements OnInit {
       this.dataSource.data = coins;
       this.isTableLoading = false;
       this.updateDate = new Date();
-      this.lastUpdated = this.updateDate.toLocaleTimeString()
+      this.lastUpdated = this.updateDate.toLocaleTimeString();
       this.openSnackBar(`Refreshed: ${this.lastUpdated}`);
     });
   }
