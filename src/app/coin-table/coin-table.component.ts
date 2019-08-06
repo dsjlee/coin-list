@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CoinService } from '../coin.service';
 import { Coin } from '../models';
 import { interval, Observable } from 'rxjs';
+import { List } from 'linqts';
 
 @Component({
   selector: 'app-coin-table',
