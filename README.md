@@ -1,5 +1,5 @@
 # CoinList
-Progressive Web Application built with Angular 9 Material Design components. <br>
+Progressive Web Application built with Angular 10 Material Design components. <br>
 Displays Cryptocurrency data from Coinmarketcap's pro API v1
 
 Demo of running application: https://dsjlee.github.io <br>
@@ -12,7 +12,7 @@ Using CMC's pro-API requires your own server-side application acting as proxy se
 Example of such proxy service app can be found at https://github.com/dsjlee/CoreApi
 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.x
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.x
 
 ## Development server
 
